@@ -6,7 +6,7 @@ int main()
 	for (int i=0; i<n; i++) {printf("arr[%d]: ", i); scanf("%d", &arr[i]);}
 
 	for (int i=0; i<n/2; i++)
-	{	
+	{
 		if (n%2==0)
 		{
 			if (i+(n/2)<n)
