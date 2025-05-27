@@ -21,9 +21,8 @@ _start:
 
 	movq $10, %rcx				# DIV is performed with value stored in RCX.
 	movq $result + 23, %rdi
-	movq $0x0a, (%rdi)
+	movq $0x0a, (%rdi)			# Moving 1-byte to 8-byte register using 8-byte call. Why it works?
 	decq %rdi
-
 	call to_ascii
 
 	movq $1, %rax
@@ -39,7 +38,7 @@ _start:
 
 
 to_ascii: 					# Kept outside because it interferes the flow (error) when kept in.
-	xorq %rdx, %rdx 		# Cleaning RDX
+	xorq %rdx, %rdx 		# Cleaning RDX as it contains value from previous iteration operation.
 
 	divq %rcx 				# RAX = RAX / RCX, RDX = RAX % RCX
 	addb $0x30, %dl			# Converting remainder at RAX to ASCII.
